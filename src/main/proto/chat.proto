@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.na2te.grpc.proto";
+
+package notification;
+
+// 채팅 서비스 정의
+service ChatService {
+  // 핵심: 요청(Request)과 응답(Response) 모두에 'stream' 키워드가 들어갑니다.
+  rpc StreamChat (stream ChatMessage) returns (stream ChatResponse) {}
+}
+
+// 클라이언트가 보내는 메시지
+message ChatMessage {
+  string user_id = 1;  // 보내는 유저 ID
+  string content = 2;  // 메시지 내용
+}
+
+// 서버가 돌려주는 응답 메시지
+message ChatResponse {
+  string user_id = 1;      // 메시지를 보낸 유저 ID (누가 말했는지 표시)
+  string content = 2;      // 메시지 내용
+  string timestamp = 3;    // 서버 수신 시간
+}
