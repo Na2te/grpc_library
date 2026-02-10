@@ -7,7 +7,6 @@ package notification;
 
 // 채팅 서비스 정의
 service ChatService {
-  // 핵심: 요청(Request)과 응답(Response) 모두에 'stream' 키워드가 들어갑니다.
   rpc StreamChat (stream ChatMessage) returns (stream ChatResponse) {}
 }
 
