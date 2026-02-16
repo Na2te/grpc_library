@@ -23,6 +23,7 @@ repositories {
 publishing {
     publications {
         create<MavenPublication>("maven") {
+            artifactId = "android"
             from(components["kotlin"]) // java 대신 'kotlin' 컴포넌트 배포
         }
     }
