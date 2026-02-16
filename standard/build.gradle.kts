@@ -8,6 +8,15 @@ group = "com.na2te.grpc.library"
 version = "0.0.0"
 
 wire {
+    custom {
+        schemaHandlerFactory = com.squareup.wire.kotlin.grpcserver.GrpcServerSchemaHandler.Factory()
+        options = mapOf(
+            "rpcRole" to "server",
+            "singleMethodServices" to "false",
+            "rpcCallStyle" to "suspending",
+        )
+        exclusive = false
+    }
     kotlin {
         rpcRole = "server"
         rpcCallStyle = "suspending"
